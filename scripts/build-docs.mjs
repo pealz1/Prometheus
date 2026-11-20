@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, rmSync } from "node:fs"
 import { resolve } from "node:path"
 import { spawnSync } from "node:child_process"
+import { createRequire } from "node:module"
 
 const projectRoot = resolve(import.meta.dirname, "..")
 const docsSource = resolve(projectRoot, "doc")
@@ -14,7 +15,8 @@ if (!existsSync(docsSource)) {
 rmSync(docsOutput, { recursive: true, force: true })
 mkdirSync(docsOutput, { recursive: true })
 
-const result = spawnSync("pnpm", ["exec", "honkit", "build", docsSource, docsOutput], {
+const honkit = createRequire(import.meta.url).resolve("honkit/bin/honkit.js")
+const result = spawnSync(process.execPath, [honkit, "build", docsSource, docsOutput], {
   cwd: projectRoot,
   stdio: "inherit",
 })

@@ -18,7 +18,8 @@ let luaFactoryCtorPromise: Promise<LuaFactoryConstructor> | null = null
 
 function resolveWasmUri(wasmUrl: string): string {
   if (typeof process !== "undefined" && process.versions?.node && wasmUrl.startsWith("/@fs/")) {
-    return wasmUrl.slice("/@fs".length)
+    const path = wasmUrl.slice("/@fs".length)
+    return process.platform === "win32" ? path.replace(/^\/(?=[A-Za-z]:\/)/, "") : path
   }
 
   return wasmUrl

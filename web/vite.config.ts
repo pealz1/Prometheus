@@ -1,5 +1,6 @@
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
+import { fileURLToPath } from "node:url"
 import { defineConfig } from "vite"
 
 import { prometheusLuaPlugin } from "./src/vite/prometheusLuaPlugin"
@@ -50,7 +51,7 @@ export default defineConfig(({ command }) => {
     },
     resolve: {
       alias: {
-        "@": new URL("./src", import.meta.url).pathname,
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
     optimizeDeps: {

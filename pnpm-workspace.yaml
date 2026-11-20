@@ -1,2 +1,8 @@
 packages:
   - web
+minimumReleaseAgeExclude:
+  - '@testing-library/jest-dom@8.0.0'
+  - lucide-react@1.76.0
+  - tailwind-merge@3.7.1
+overrides:
+  'esbuild@>=0.27.3 <0.28.1': ^0.28.2

@@ -1,4 +1,4 @@
-import { BookText, Check, Copy, Download, FileCode2, Github, Loader2, Play, RotateCcw, Share2, Square, TriangleAlert } from "lucide-react"
+import { BookText, Check, Copy, Download, ExternalLink, FileCode2, Loader2, Play, RotateCcw, Share2, Square, TriangleAlert } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { toast } from "sonner"
 
@@ -500,7 +500,7 @@ export default function App() {
                 className="inline-flex items-center gap-2 rounded-md border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 GitHub
-                <Github className="size-3.5" />
+                <ExternalLink aria-hidden="true" className="size-3.5" />
               </a>
               <a
                 href={docsHref}
